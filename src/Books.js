@@ -19,6 +19,8 @@ class Books extends React.Component {
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
+          <p>zmapuj i za pomoca filtra podziel na 3 kategorie</p>
+          
         </div>
         <div className="list-books-content">
           <div>
@@ -173,7 +175,7 @@ class Books extends React.Component {
         </div>
         <div className="open-search">
           <Link to="/search"></Link>
-          
+
         </div>
 
       </div>
