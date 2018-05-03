@@ -18,9 +18,12 @@ class Books extends React.Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
+          {this.props.library.filter((el) => el.shelf === 'currentlyReading').map((el)=>el.title + ' | ')}
+          <hr />
+          {this.props.library.filter((el) => el.shelf === 'wantToRead').map((el)=>el.title + ' | ')}
+          <hr />
+          {this.props.library.filter((el) => el.shelf === 'read').map((el)=>el.title + ' | ')}
           <h1>MyReads</h1>
-          <p>zmapuj i za pomoca filtra podziel na 3 kategorie</p>
-          
         </div>
         <div className="list-books-content">
           <div>

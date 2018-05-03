@@ -6,24 +6,25 @@ import {Route} from 'react-router-dom'
 import Books from './Books'
 import Search from './Search'
 
-const test = BooksAPI.getAll();
-console.log(test.data);
-
 class BooksApp extends React.Component {
   state = {
     library: []
   }
 
   componentDidMount() {
-    BooksAPI.getAll().then(data => this.setState({
-      library: data
-    }))
+    BooksAPI.getAll().then((data) => {
+      this.setState({
+        library: data
+      });
+      console.log(data);
+    })
+
   }
 
   render() {
     return (
       <div className="app">
-        {this.state.library.map((el)=>el.title)}
+
         <Route exact path="/" render={()=>(
             <Books library={this.state.library}/>
           )}/>
