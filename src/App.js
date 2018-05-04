@@ -20,10 +20,17 @@ class BooksApp extends React.Component {
     })
   }
 
+  searchBook(query) {
+    BooksAPI.search(query).then((data) => {
+      console.log(data);
+    })
+  }
+
   updateShelf(book, shelf) {
     BooksAPI.update(book, shelf).then((data) => {
       console.log(data);
       //this.viewBooks();
+      window.location.reload();
     })
   }
 
@@ -37,11 +44,15 @@ class BooksApp extends React.Component {
 
         <Route exact path="/" render={()=>(
             <Books
-              library={this.state.library}
+              library = {this.state.library}
               updateShelf = {this.updateShelf}
               />
           )}/>
-        <Route path="/search" component={Search} />
+        <Route path="/search" render={()=>(
+            <Search
+              searchBook = {this.searchBook}
+              />
+        )}/>
 
       </div>
     )
