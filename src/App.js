@@ -8,7 +8,8 @@ import Search from './Search'
 
 class BooksApp extends React.Component {
   state = {
-    library: []
+    library: [],
+    searchResults: []
   }
 
   viewBooks() {
@@ -20,10 +21,13 @@ class BooksApp extends React.Component {
     })
   }
 
-  searchBook(query) {
-    BooksAPI.search(query).then((data) => {
-      console.log(data);
-    })
+  searchBook = (query) => {
+    BooksAPI.search(query).then((data) =>
+
+    this.setState({
+        searchResults: data
+      })
+    )
   }
 
   updateShelf(book, shelf) {
@@ -50,6 +54,7 @@ class BooksApp extends React.Component {
           )}/>
         <Route path="/search" render={()=>(
             <Search
+              searchResults = {this.state.searchResults}
               searchBook = {this.searchBook}
               />
         )}/>
