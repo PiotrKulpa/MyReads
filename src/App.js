@@ -12,6 +12,8 @@ class BooksApp extends React.Component {
     searchResults: []
   }
 
+  empty = []
+
   viewBooks() {
     BooksAPI.getAll().then((data) => {
       this.setState({
@@ -22,12 +24,18 @@ class BooksApp extends React.Component {
   }
 
   searchBook = (query) => {
-    BooksAPI.search(query).then((data) =>
+    BooksAPI.search(query).then((data) => {
 
-    this.setState({
-        searchResults: data
-      })
-    )
+      if(!data || data.error) {
+          this.setState({searchResults : []})
+        } else {
+          this.setState({searchResults : data})
+        }
+
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   updateShelf(book, shelf) {
