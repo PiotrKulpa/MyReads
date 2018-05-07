@@ -30,7 +30,7 @@ class Search extends React.Component {
                   <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
                       <div className="book-shelf-changer">
-                        <select onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
+                        <select defaultValue="none" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                           <option value="none" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>

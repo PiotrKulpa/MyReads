@@ -64,6 +64,7 @@ class BooksApp extends React.Component {
             <Search
               searchResults = {this.state.searchResults}
               searchBook = {this.searchBook}
+              updateShelf = {this.updateShelf}
               />
         )}/>
 
