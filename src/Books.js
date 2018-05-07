@@ -4,15 +4,6 @@ import './App.css'
 import {Link} from 'react-router-dom'
 
 class Books extends React.Component {
-  state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-
-  }
 
   render() {
     return (
@@ -32,7 +23,7 @@ class Books extends React.Component {
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                          <select onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
+                          <select defaultValue="currentlyReading" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
@@ -59,7 +50,7 @@ class Books extends React.Component {
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                          <select onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
+                          <select defaultValue="wantToRead" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
@@ -86,7 +77,7 @@ class Books extends React.Component {
                       <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                          <select onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
+                          <select defaultValue="read" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                             <option value="none" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
