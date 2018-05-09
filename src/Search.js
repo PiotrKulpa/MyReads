@@ -28,10 +28,13 @@ class Search extends React.Component {
               <li key={el.id}>
                 <div className="book">
                   <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
+                    {el.imageLinks ?
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div> :
+                  <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(public/noimage.jpg)' }}></div>
+                    }
                       <div className="book-shelf-changer">
                         <select defaultValue="none" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
-                          <option value="none" disabled>Move to...</option>
+                          <option value="moveto" disabled>Move to...</option>
                           <option value="currentlyReading">Currently Reading</option>
                           <option value="wantToRead">Want to Read</option>
                           <option value="read">Read</option>
@@ -39,6 +42,15 @@ class Search extends React.Component {
                         </select>
                       </div>
                       </div>
+                      {el.title ?
+                        <div className="book-title">{el.title}</div> :
+                        <div className="book-title">No title available</div>
+                      }
+                      {el.authors ?
+                        <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div> :
+                        <div className="book-authors">No author available</div>
+                      }
+
                       </div>
               </li>
           )}
@@ -46,6 +58,7 @@ class Search extends React.Component {
 
         </div>
       </div>
+
     )
   }
 }

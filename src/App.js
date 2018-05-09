@@ -32,6 +32,8 @@ class BooksApp extends React.Component {
           this.setState({searchResults : data})
         }
 
+        console.log(data);
+
     })
     .catch(err => {
       console.log(err);
@@ -61,11 +63,18 @@ class BooksApp extends React.Component {
               />
           )}/>
         <Route path="/search" render={()=>(
-            <Search
+            <div>
+              <Search
               searchResults = {this.state.searchResults}
               searchBook = {this.searchBook}
               updateShelf = {this.updateShelf}
               />
+
+              <Books
+                library = {this.state.library}
+                updateShelf = {this.updateShelf}
+                />
+              </div>
         )}/>
 
       </div>
