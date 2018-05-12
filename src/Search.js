@@ -23,7 +23,7 @@ class Search extends React.Component {
           <ol className="books-grid">
             {this.props.searchResults.length === 0 ?
               <h1>No results</h1>:
-              this.props.searchResults.filter((el) => this.props.library.filter((el2) => el.id !== el2.id )).map((el) =>
+              this.props.searchResults.filter((el) => !this.props.library.map((el) => el.id).includes(el.id)).map((el) =>
               <li key={el.id}>
                 <div className="book">
                   <div className="book-top">
