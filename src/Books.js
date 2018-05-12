@@ -21,7 +21,11 @@ class Books extends React.Component {
                   <li key={el.id}>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
+                        {
+                        el.imageLinks ?
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div> :
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(public/noimage.jpg)' }}></div>
+                        }
                         <div className="book-shelf-changer">
                           <select defaultValue="currentlyReading" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                             <option value="none" disabled>Move to...</option>
@@ -32,8 +36,14 @@ class Books extends React.Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">{el.title}</div>
-                      <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div>
+                      {el.title ?
+                        <div className="book-title">{el.title}</div> :
+                        <div className="book-title">No title available</div>
+                      }
+                      {el.authors ?
+                        <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div> :
+                        <div className="book-authors">No author available</div>
+                      }
                     </div>
                   </li>
                 )}
@@ -48,7 +58,11 @@ class Books extends React.Component {
                   <li key={el.id}>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
+                        {
+                        el.imageLinks ?
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div> :
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(public/noimage.jpg)' }}></div>
+                        }
                         <div className="book-shelf-changer">
                           <select defaultValue="wantToRead" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                             <option value="none" disabled>Move to...</option>
@@ -59,8 +73,14 @@ class Books extends React.Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">{el.title}</div>
-                      <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div>
+                      {el.title ?
+                        <div className="book-title">{el.title}</div> :
+                        <div className="book-title">No title available</div>
+                      }
+                      {el.authors ?
+                        <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div> :
+                        <div className="book-authors">No author available</div>
+                      }
                     </div>
                   </li>
                 )}
@@ -75,7 +95,11 @@ class Books extends React.Component {
                   <li key={el.id}>
                     <div className="book">
                       <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div>
+                        {
+                        el.imageLinks ?
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div> :
+                        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(public/noimage.jpg)' }}></div>
+                        }
                         <div className="book-shelf-changer">
                           <select defaultValue="read" onChange={e => this.props.updateShelf({id: el.id}, e.target.value)}>
                             <option value="none" disabled>Move to...</option>
@@ -86,8 +110,14 @@ class Books extends React.Component {
                           </select>
                         </div>
                       </div>
-                      <div className="book-title">{el.title}</div>
-                      <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div>
+                      {el.title ?
+                        <div className="book-title">{el.title}</div> :
+                        <div className="book-title">No title available</div>
+                      }
+                      {el.authors ?
+                        <div className="book-authors">{el.authors.toString().replace(/,/g, ', ')}</div> :
+                        <div className="book-authors">No author available</div>
+                      }
                     </div>
                   </li>
                 )}
