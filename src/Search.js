@@ -47,7 +47,7 @@ class Search extends React.Component {
                      */}
                     {el.imageLinks ?
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${el.imageLinks.smallThumbnail})` }}></div> :
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: 'url(public/noimage.jpg)' }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${require("./icons/noimage.jpg")})` }}></div>
                     }
                       <div className="book-shelf-changer">
 
