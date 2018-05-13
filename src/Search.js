@@ -28,6 +28,9 @@ class Search extends React.Component {
             />
           </div>
         </div>
+        <div className="list-books-title" style={{marginTop: 55}}>
+          <h1>Results:</h1>
+        </div>
         <div className="search-books-results">
           <ol className="books-grid">
 
