@@ -1,32 +1,38 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-//import {Link} from 'react-router-dom'
 import {Route} from 'react-router-dom'
 import Books from './Books'
 import Search from './Search'
+import Preloader from './Preloader'
 
 class BooksApp extends React.Component {
 
    state = {
      library: [],
-     searchResults: []
+     searchResults: [],
+     preloader: 'block'
    }
 
-
-
-
+   showPreloader() {
+     this.setState({
+       preloader: 'block'
+     });
+   }
 
   viewBooks() {
+    this.showPreloader();
     BooksAPI.getAll().then((data) => {
       this.setState({
-        library: data
+        library: data,
+        preloader: 'none'
       });
       console.log(data);
     })
   }
 
   searchBook = (query) => {
+    this.showPreloader();
     BooksAPI.search(query).then((data) => {
 
       if(!data || data.error) {
@@ -34,6 +40,9 @@ class BooksApp extends React.Component {
         } else {
           this.setState({searchResults : data})
         }
+        this.setState({
+          preloader: 'none'
+        });
         console.log(data);
     })
     .catch(err => {
@@ -42,7 +51,7 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
-
+    this.showPreloader();
     BooksAPI.update(book, shelf).then((data) => {
       this.viewBooks();
       console.log(data);
@@ -53,22 +62,22 @@ class BooksApp extends React.Component {
     this.viewBooks();
   }
 
-  // componentDidUpdate() {
-  //   this.viewBooks();
-  // }
-
   render() {
     return (
       <div className="app">
 
         <Route exact path="/" render={()=>(
-            <Books
-              library = {this.state.library}
-              updateShelf = {this.updateShelf}
-              />
+            <div>
+              <Preloader preloader = {this.state.preloader}/>
+              <Books
+                library = {this.state.library}
+                updateShelf = {this.updateShelf}
+                />
+            </div>
           )}/>
         <Route path="/search" render={()=>(
             <div>
+              <Preloader preloader = {this.state.preloader}/>
               <Search
               searchResults = {this.state.searchResults}
               searchBook = {this.searchBook}
