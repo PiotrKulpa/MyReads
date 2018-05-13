@@ -7,12 +7,15 @@ import Books from './Books'
 import Search from './Search'
 
 class BooksApp extends React.Component {
-  state = {
-    library: [],
-    searchResults: []
-  }
 
-  empty = []
+   state = {
+     library: [],
+     searchResults: []
+   }
+
+
+
+
 
   viewBooks() {
     BooksAPI.getAll().then((data) => {
@@ -31,26 +34,28 @@ class BooksApp extends React.Component {
         } else {
           this.setState({searchResults : data})
         }
-
         console.log(data);
-
     })
     .catch(err => {
       console.log(err);
     })
   }
 
-  updateShelf(book, shelf) {
+  updateShelf = (book, shelf) => {
+
     BooksAPI.update(book, shelf).then((data) => {
+      this.viewBooks();
       console.log(data);
-      //this.viewBooks();
-      window.location.reload();
     })
   }
 
   componentDidMount() {
     this.viewBooks();
   }
+
+  // componentDidUpdate() {
+  //   this.viewBooks();
+  // }
 
   render() {
     return (
