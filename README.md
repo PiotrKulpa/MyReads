@@ -18,7 +18,7 @@ Run npm start in console.
 
 * React
 * Google Fonts
-
+* Preloader icon from https://loading.io/
 
 ## Authors
 
